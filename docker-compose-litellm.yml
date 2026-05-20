@@ -4,7 +4,9 @@ services:
     environment:
       POSTGRES_DB: litellm
       POSTGRES_USER: litellm
-      POSTGRES_PASSWORD: litellm_password
+      # Use env. variable LITELLM_DB_PASSWORD
+      # otherwise default to litellm_password
+      POSTGRES_PASSWORD: ${LITELLM_DB_PASSWORD:-litellm_password}
     ports:
       - "5432:5432"
     volumes:
@@ -17,8 +19,9 @@ services:
     volumes:
       - ./litellm-config.yml:/app/config.yaml
     environment:
-      # Having the Master Key hard-coded here is NOT the Best Practice
-      - LITELLM_MASTER_KEY=sk-1234
+      # Use env. variable LITELLM_MASTER_KEY
+      # otherwise default to sk-1234
+      - LITELLM_MASTER_KEY=${LITELLM_MASTER_KEY:-sk-1234}
     # Using from litellm-config.yml
     #environment:
     #  DATABASE_URL: postgres://litellm:litellm_password@db:5432/litellm
