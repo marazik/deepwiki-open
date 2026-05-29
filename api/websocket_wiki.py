@@ -855,9 +855,6 @@ This file contains...
                             fallback_response = await model.acall(api_kwargs=fallback_api_kwargs, model_type=ModelType.LLM)
 
                             # Handle streaming fallback_response from LiteLLM
-                            # async for chunk in fallback_response:
-                            #     text = chunk if isinstance(chunk, str) else getattr(chunk, 'text', str(chunk))
-                            #     await websocket.send_text(text)
                             async for chunk in fallback_response:
                                 choices = getattr(chunk, "choices", [])
                                 if len(choices) > 0:
