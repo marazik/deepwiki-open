@@ -1,0 +1,27 @@
+{
+  "embedder_ollama": {
+    "client_class": "OllamaClient",
+    "model_kwargs": {
+      "model": "nomic-embed-text"
+    }
+  },
+  "embedder": {
+    "client_class": "LiteLLMClient",
+    "initialize_kwargs": {
+      "api_key": "${LITELLM_API_KEY}",
+      "base_url": "${LITELLM_BASE_URL}"
+    },
+    "batch_size": 10,
+    "model_kwargs": {
+      "model": "nomic-embed-text"
+    }
+  },
+  "retriever": {
+    "top_k": 20
+  },
+  "text_splitter": {
+    "split_by": "word",
+    "chunk_size": 350,
+    "chunk_overlap": 100
+  }
+}
