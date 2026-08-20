@@ -7,10 +7,6 @@
   },
   "embedder": {
     "client_class": "LiteLLMClient",
-    "initialize_kwargs": {
-      "api_key": "${LITELLM_API_KEY}",
-      "base_url": "${LITELLM_BASE_URL}"
-    },
     "batch_size": 10,
     "model_kwargs": {
       "model": "nomic-embed-text"
