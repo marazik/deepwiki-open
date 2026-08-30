@@ -20,6 +20,12 @@ model_list:
 # This overrides the one in the docker-compose file
 general_settings:
   database_url: postgres://litellm:litellm_password@db:5432/litellm
+  # Persists models added via the Admin UI/API into the database.
+  store_model_in_db: true
+  # Uncomment to make LiteLLM capture full prompts and responses in the
+  # LiteLLM_SpendLogs table (viewable via the Admin UI Logs page, or by
+  # querying Postgres directly).
+  # store_prompts_in_spend_logs: true
 
 litellm_settings:
   set_verbose: true
